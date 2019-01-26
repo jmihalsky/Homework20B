@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import Jumbotron from "../components/Jumbotron";
 import BookResults from "../components/bookresults";
+import SearchBar from "../components/searchbar";
 
 export default class BookSearch extends Component {
     state = {
@@ -39,5 +40,28 @@ export default class BookSearch extends Component {
 
     handleEmptyResults = () => {
         return <div><Jumbotron><h2>No Books Found</h2></Jumbotron></div>
+    }
+
+    handleSavingBooks = (authors, title, publisher, thumbnail, description, link) => {
+        var newBook = {
+            authors: authors,
+            title: title,
+            publisher: publisher,
+            thumbnail: thumbnail,
+            description: description,
+            link: link
+        };
+        API.saveBook(newBook).then(res => {
+            console.log(res);
+        })
+    }
+
+    render() {
+        return(
+            <div>
+                <SearchBar handleBookSearch={this.handleBookSearch} handleInputChange={this.handleInputChange}/>
+                {!this.state.results.length ? this.handleEmptyResults() : this.handleRenderingResults()}
+            </div>
+        );
     }
 }

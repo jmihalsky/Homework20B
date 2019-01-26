@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 
-export default function BookResults(props) {
+export default function SavedBooks(props) {
     return(
         <div>
             <div className="card">
@@ -11,7 +11,7 @@ export default function BookResults(props) {
                         <a href={props.link} target="_blank" rel="noopener noreferrer">
                             <button type="button" className="btn btn-success">View</button>
                         </a>
-                        <button onClick={() => props.handleSavingBooks(props.authors, props.title, props.publisher, props.thumbnail, props.description, props.link)} type="button" className="btn btn-info">Save</button>
+                        <button onClick={() => props.handleDeleteBook(props.id)} type="button" className="btn btn-info">Delete</button>
                     </div>
                     <small>Published By {props.publisher}</small>
                 </div>
