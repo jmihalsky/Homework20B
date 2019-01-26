@@ -26,9 +26,17 @@ export default class BookSearch extends Component {
 
     handleRenderingResults = () => {
         if (this.state.results) {
+            console.log(this.state)
             var newArray = this.state.results.map(b => {
-                var {authors, title, publisher, thumbnail, description, link} = b.VolumeInfo;
-                return <BookResults handleSavingBooks={this.handleSavingBooks} key={title} authors={authors} title={title} publisher={publisher} thumbnail={thumbnail} description={description} link={link}/> 
+                return <BookResults 
+                handleSavingBooks={this.handleSavingBooks} 
+                key={b.volumeInfo.title} 
+                authors={b.volumeInfo.authors} 
+                title={b.volumeInfo.title} 
+                publisher={b.volumeInfo.publisher} 
+                thumbnail={b.volumeInfo.imageLinks.thumbnail} 
+                description={b.volumeInfo.description} 
+                link={b.volumeInfo.canonicalVolumeLink}/> 
             })
             return newArray;
         }

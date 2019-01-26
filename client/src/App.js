@@ -13,7 +13,7 @@ function App() {
         <Jumbotron></Jumbotron>
         <Switch>
           <Route exact path="/" component={Search} />
-          <Route component={Saved} />
+          <Route exact path="/saved" component={Saved} />
         </Switch>
       </div>
     </Router>

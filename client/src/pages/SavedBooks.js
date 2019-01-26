@@ -19,13 +19,14 @@ export default class Saved extends Component {
 
     handleRenderingBooks = () => {
         let temp = this.state.SavedBooks.map(b => 
-            <SavedBooks key={b.title} handleBookDelete={this.handleBookDelete} id={b.id} authors={b.authors} title={b.title} publisher={b.publisher} thumbnail={b.thumbnail} description={b.description} />
+            <SavedBooks key={b._id} handleBookDelete={this.handleBookDelete} id={b._id} authors={b.authors} title={b.title} publisher={b.publisher} thumbnail={b.thumbnail} description={b.description} link={b.link}/>
         )
 
         return temp;
     }
 
     handleBookDelete = (id) => {
+        console.log(id);
         API.deleteBook(id).then(res => {
             this.handleLoadBooks();
         })
