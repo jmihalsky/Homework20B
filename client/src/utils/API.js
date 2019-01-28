@@ -18,6 +18,10 @@ export default {
     return axios.post("/api/books", bookData);
   },
   searchBook: function(book, amt) {
+    if(amt === "")
+    {
+      amt = "5";
+    }
     return axios.get("https://www.googleapis.com/books/v1/volumes?q=" + book + "&maxResults=" + amt);
   }
 };
