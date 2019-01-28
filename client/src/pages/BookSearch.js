@@ -7,6 +7,7 @@ import SearchBar from "../components/searchbar";
 export default class BookSearch extends Component {
     state = {
         search: "",
+        SearchAmt: "",
         results: [],
         error: "",
         good: false
@@ -14,11 +15,13 @@ export default class BookSearch extends Component {
 
     handleInputChange = (event) => {
         const {name, value } = event.target;
+        console.log(name, value);
         this.setState({ [name]: value});
+        console.log(this.state.SearchAmt);
     }
 
     handleBookSearch = (event) => {
-        API.searchBook(this.state.search).then((res) => {
+        API.searchBook(this.state.search, this.state.SearchAmt).then((res) => {
             console.log(res.data);
             this.setState({results: res.data.items, good: true});
         }).catch(err => this.setState({error: err}));
@@ -61,6 +64,7 @@ export default class BookSearch extends Component {
         };
         API.saveBook(newBook).then(res => {
             console.log(res);
+
         })
     }
 

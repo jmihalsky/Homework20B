@@ -7,7 +7,7 @@ export default function SavedBooks(props) {
             <div className="card">
                 <div className="card-header">
                     <h3>{props.title}</h3>
-                    <h5>{props.authors}</h5>
+                    <h5>{props.authors ? props.authors.join(" , "):" "}</h5>
                     <div className="text-right">
                         <a href={props.link} target="_blank" rel="noopener noreferrer">
                             <button type="button" className="btn btn-success">View</button>
