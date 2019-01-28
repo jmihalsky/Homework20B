@@ -1,0 +1,19 @@
+.card{
+    display: flex;
+}
+
+.text-right{
+    justify-content: flex-end;
+    margin-top: -40px;
+}
+
+.card-body{
+    display: flex;
+}
+
+.btn{
+    margin-right: 4px;
+}
+.results-text{
+    padding: 20px;
+}
